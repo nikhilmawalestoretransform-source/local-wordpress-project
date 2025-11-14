@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       ST Stock Management
  * Plugin URI:        https://storetransform.com
- * Description:       Plugin can Manage stock of IT company assets
+ * Description:       Plugin can Manage stock of IT company assets.
  * Version:           1.0.0
  * Author:            storetransform
  * Author URI:        https://storetransform.com/
