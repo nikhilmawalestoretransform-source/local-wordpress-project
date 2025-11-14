@@ -1,0 +1,26 @@
+[14-Nov-2025 05:08:50 UTC] PHP Fatal error:  Uncaught Error: Class "StockManagementShortcode" not found in C:\new xampp\htdocs\wordpress\wp-content\plugins\st-stock-management-rebuilt\admin\stock-management-employee.php:19
+Stack trace:
+#0 C:\new xampp\htdocs\wordpress\wp-content\plugins\st-stock-management-rebuilt\includes\class-st-stock-management.php(37): require_once()
+#1 C:\new xampp\htdocs\wordpress\wp-includes\class-wp-hook.php(324): St_Stock_Management->includes('')
+#2 C:\new xampp\htdocs\wordpress\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#3 C:\new xampp\htdocs\wordpress\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#4 C:\new xampp\htdocs\wordpress\wp-settings.php(578): do_action('plugins_loaded')
+#5 C:\new xampp\htdocs\wordpress\wp-config.php(103): require_once('C:\\new xampp\\ht...')
+#6 C:\new xampp\htdocs\wordpress\wp-load.php(50): require_once('C:\\new xampp\\ht...')
+#7 C:\new xampp\htdocs\wordpress\wp-admin\admin.php(35): require_once('C:\\new xampp\\ht...')
+#8 C:\new xampp\htdocs\wordpress\wp-admin\plugins.php(10): require_once('C:\\new xampp\\ht...')
+#9 {main}
+  thrown in C:\new xampp\htdocs\wordpress\wp-content\plugins\st-stock-management-rebuilt\admin\stock-management-employee.php on line 19
+[14-Nov-2025 05:22:34 UTC] PHP Fatal error:  Uncaught Error: Class "StockManagementShortcode" not found in C:\new xampp\htdocs\wordpress\wp-content\plugins\st-stock-management-rebuilt\admin\stock-management-employee.php:19
+Stack trace:
+#0 C:\new xampp\htdocs\wordpress\wp-content\plugins\st-stock-management-rebuilt\includes\class-st-stock-management.php(37): require_once()
+#1 C:\new xampp\htdocs\wordpress\wp-includes\class-wp-hook.php(324): St_Stock_Management->includes('')
+#2 C:\new xampp\htdocs\wordpress\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#3 C:\new xampp\htdocs\wordpress\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#4 C:\new xampp\htdocs\wordpress\wp-settings.php(578): do_action('plugins_loaded')
+#5 C:\new xampp\htdocs\wordpress\wp-config.php(103): require_once('C:\\new xampp\\ht...')
+#6 C:\new xampp\htdocs\wordpress\wp-load.php(50): require_once('C:\\new xampp\\ht...')
+#7 C:\new xampp\htdocs\wordpress\wp-admin\admin.php(35): require_once('C:\\new xampp\\ht...')
+#8 C:\new xampp\htdocs\wordpress\wp-admin\plugins.php(10): require_once('C:\\new xampp\\ht...')
+#9 {main}
+  thrown in C:\new xampp\htdocs\wordpress\wp-content\plugins\st-stock-management-rebuilt\admin\stock-management-employee.php on line 19

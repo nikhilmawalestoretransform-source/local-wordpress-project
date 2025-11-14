@@ -1,0 +1,140 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+
+/* General styling for the form container */
+.stock-management-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+/* Form labels */
+.stock-management-form label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Form inputs */
+.stock-management-form input[type="text"],
+.stock-management-form input[type="number"],
+.stock-management-form input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+/* Button styling */
+.stock-management-form button[type="submit"] {
+    display: block;
+    width: 100%;
+    background-color: #0073aa;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.stock-management-form button[type="submit"]:hover {
+    background-color: #005880;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .stock-management-form-container {
+        padding: 15px;
+    }
+
+    .stock-management-form label {
+        font-size: 12px;
+    }
+
+    .stock-management-form input[type="text"],
+    .stock-management-form input[type="number"],
+    .stock-management-form input[type="date"] {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .stock-management-form button[type="submit"] {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+}
+
+
+/* CSS FOR TABLE  */
+.stock-management-table {
+	max-width: 100% !important;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.stock-management-table th,
+.stock-management-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.stock-management-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.stock-management-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.stock-management-table button {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.stock-management-table button:hover {
+    background-color: #c0392b;
+}
+
+.stock-management-table a {
+    color: #0073aa;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #0073aa;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.stock-management-table a:hover {
+    background-color: #0073aa;
+    color: #fff;
+}
+
+.two-fields{
+	display: flex;
+}
+
+.delete-stock-entry{
+	color: #fff;
+	background-color: #ff1901 !important;
+}

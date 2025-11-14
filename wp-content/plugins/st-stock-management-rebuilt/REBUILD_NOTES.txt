@@ -1,0 +1,18 @@
+ST Stock Management - Rebuilt
+----------------------------
+This rebuilt package reorganizes the original plugin into a modern structure:
+- st-stock-management.php (bootstrap)
+- includes/ (classes: core, db, activator, deactivator)
+- admin/ (original admin pages copied)
+- public/ (original public files copied)
+- assets/, languages/, templates/
+
+Important:
+- I preserved original admin/public PHP files (copied into admin/ and public/) so functionality remains intact.
+- I added a proper core class and DB class to ensure activation and loading succeed.
+- Some table definitions in the DB class were intentionally simplified; the important tables used by the plugin are included.
+- If you want a full deep-refactor (convert admin pages to OOP classes, move templates), tell me and I will continue.
+
+Install:
+- Upload the entire folder 'st-stock-management-rebuilt' into wp-content/plugins/
+- Activate the plugin in WP admin.
