@@ -24,3 +24,28 @@ Stack trace:
 #8 C:\new xampp\htdocs\wordpress\wp-admin\plugins.php(10): require_once('C:\\new xampp\\ht...')
 #9 {main}
   thrown in C:\new xampp\htdocs\wordpress\wp-content\plugins\st-stock-management-rebuilt\admin\stock-management-employee.php on line 19
+[14-Nov-2025 05:59:29 UTC] PHP Warning:  Undefined variable $assignments_table in C:\new xampp\htdocs\wordpress\wp-content\plugins\st-stock-management\st-stock-management.php on line 122
+[14-Nov-2025 05:59:29 UTC] WordPress database error You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ADD CONSTRAINT fk_asset_id FOREIGN KEY (asset_id) REFERENCES wp_stock_managem...' at line 2 for query ALTER TABLE 
+     ADD CONSTRAINT fk_asset_id FOREIGN KEY (asset_id) REFERENCES wp_stock_management(id) ON DELETE CASCADE made by activate_plugin, do_action('activate_st-stock-management/st-stock-management.php'), WP_Hook->do_action, WP_Hook->apply_filters, activate_st_stock_management
+[14-Nov-2025 05:59:29 UTC] PHP Warning:  Undefined variable $assignments_table in C:\new xampp\htdocs\wordpress\wp-content\plugins\st-stock-management\st-stock-management.php on line 127
+[14-Nov-2025 05:59:29 UTC] PHP Warning:  Undefined variable $employees_table in C:\new xampp\htdocs\wordpress\wp-content\plugins\st-stock-management\st-stock-management.php on line 128
+[14-Nov-2025 05:59:29 UTC] WordPress database error You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ADD CONSTRAINT fk_employee_id FOREIGN KEY (employee_id) REFERENCES (id) ON DE...' at line 2 for query ALTER TABLE 
+     ADD CONSTRAINT fk_employee_id FOREIGN KEY (employee_id) REFERENCES (id) ON DELETE CASCADE made by activate_plugin, do_action('activate_st-stock-management/st-stock-management.php'), WP_Hook->do_action, WP_Hook->apply_filters, activate_st_stock_management
+[14-Nov-2025 05:59:29 UTC] Stock Management Tables Creation Results: Array
+(
+    [wp_admin_emp_stock_management] => Table already exists
+    [wp_admin_emp_stock_management_logs] => Table already exists
+    [wp_admin_item_stock_management] => Table already exists
+    [wp_admin_item_stock_management_logs] => Table already exists
+    [wp_admin_stock_management_log] => Table already exists
+    [wp_asset_assign_front_log] => Table already exists
+    [wp_emp_asset_assign_table] => Table already exists
+    [wp_emp_stock_management] => Table already exists
+    [wp_item_front_logs] => Table already exists
+    [wp_repaire_front_log] => Table already exists
+    [wp_repaire_stock_management] => Table already exists
+    [wp_stock_management] => Table already exists
+    [wp_st_stock_items_name] => Table already exists
+    [wp_st_stock_management] => Table already exists
+)
+

@@ -13,7 +13,7 @@
  * @package           St_Stock_Management
  *
  * @wordpress-plugin
- * Plugin Name:       Stock Management
+ * Plugin Name:       ST Stock Management
  * Plugin URI:        https://storetransform.com
  * Description:       Plugin can Manage stock of IT company assets
  * Version:           1.0.0
