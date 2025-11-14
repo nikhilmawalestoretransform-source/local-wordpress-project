@@ -49,3 +49,127 @@ Stack trace:
     [wp_st_stock_management] => Table already exists
 )
 
+[14-Nov-2025 06:31:56 UTC] PHP Warning:  Undefined array key "index_type" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3069
+[14-Nov-2025 06:31:56 UTC] PHP Warning:  Undefined array key "index_name" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3075
+[14-Nov-2025 06:31:56 UTC] PHP Warning:  Undefined array key "index_columns" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3078
+[14-Nov-2025 06:31:56 UTC] PHP Warning:  Undefined array key "column_name" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3107
+[14-Nov-2025 06:31:56 UTC] WordPress database error You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(``)' at line 1 for query ALTER TABLE wp_st_assets ADD  `` (``) made by activate_plugin, do_action('activate_st-it-stock-management-frontend/st-it-stock-management.php'), WP_Hook->do_action, WP_Hook->apply_filters, ST_IT_Stock_Management::activate, dbDelta
+[14-Nov-2025 06:31:56 UTC] PHP Warning:  Undefined array key "index_type" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3069
+[14-Nov-2025 06:31:56 UTC] PHP Warning:  Undefined array key "index_name" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3075
+[14-Nov-2025 06:31:56 UTC] PHP Warning:  Undefined array key "index_columns" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3078
+[14-Nov-2025 06:31:56 UTC] PHP Warning:  Undefined array key "column_name" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3107
+[14-Nov-2025 06:31:56 UTC] WordPress database error You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(``)' at line 1 for query ALTER TABLE wp_st_employees ADD  `` (``) made by activate_plugin, do_action('activate_st-it-stock-management-frontend/st-it-stock-management.php'), WP_Hook->do_action, WP_Hook->apply_filters, ST_IT_Stock_Management::activate, dbDelta
+[14-Nov-2025 06:31:56 UTC] PHP Warning:  Undefined array key "index_type" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3069
+[14-Nov-2025 06:31:56 UTC] PHP Warning:  Undefined array key "index_name" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3075
+[14-Nov-2025 06:31:56 UTC] PHP Warning:  Undefined array key "index_columns" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3078
+[14-Nov-2025 06:31:56 UTC] PHP Warning:  Undefined array key "column_name" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3107
+[14-Nov-2025 06:31:56 UTC] WordPress database error You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(``)' at line 1 for query ALTER TABLE wp_st_asset_assign ADD  `` (``) made by activate_plugin, do_action('activate_st-it-stock-management-frontend/st-it-stock-management.php'), WP_Hook->do_action, WP_Hook->apply_filters, ST_IT_Stock_Management::activate, dbDelta
+[14-Nov-2025 06:31:56 UTC] PHP Warning:  Undefined array key "index_type" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3069
+[14-Nov-2025 06:31:56 UTC] PHP Warning:  Undefined array key "index_name" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3075
+[14-Nov-2025 06:31:56 UTC] PHP Warning:  Undefined array key "index_columns" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3078
+[14-Nov-2025 06:31:56 UTC] PHP Warning:  Undefined array key "column_name" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3107
+[14-Nov-2025 06:31:56 UTC] WordPress database error You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(``)' at line 1 for query ALTER TABLE wp_st_repair ADD  `` (``) made by activate_plugin, do_action('activate_st-it-stock-management-frontend/st-it-stock-management.php'), WP_Hook->do_action, WP_Hook->apply_filters, ST_IT_Stock_Management::activate, dbDelta
+[14-Nov-2025 06:31:56 UTC] PHP Warning:  Undefined array key "index_type" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3069
+[14-Nov-2025 06:31:56 UTC] PHP Warning:  Undefined array key "index_name" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3075
+[14-Nov-2025 06:31:56 UTC] PHP Warning:  Undefined array key "index_columns" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3078
+[14-Nov-2025 06:31:56 UTC] PHP Warning:  Undefined array key "column_name" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3107
+[14-Nov-2025 06:31:56 UTC] WordPress database error You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(``)' at line 1 for query ALTER TABLE wp_st_activity_logs ADD  `` (``) made by activate_plugin, do_action('activate_st-it-stock-management-frontend/st-it-stock-management.php'), WP_Hook->do_action, WP_Hook->apply_filters, ST_IT_Stock_Management::activate, dbDelta
+[14-Nov-2025 06:46:44 UTC] PHP Warning:  Undefined array key "index_type" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3069
+[14-Nov-2025 06:46:44 UTC] PHP Warning:  Undefined array key "index_name" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3075
+[14-Nov-2025 06:46:44 UTC] PHP Warning:  Undefined array key "index_columns" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3078
+[14-Nov-2025 06:46:44 UTC] PHP Warning:  Undefined array key "column_name" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3107
+[14-Nov-2025 06:46:44 UTC] WordPress database error You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(``)' at line 1 for query ALTER TABLE wp_st_assets ADD  `` (``) made by activate_plugin, do_action('activate_st-it-stock-management-full/st-it-stock-management.php'), WP_Hook->do_action, WP_Hook->apply_filters, ST_IT_Stock_Management::activate, dbDelta
+[14-Nov-2025 06:46:44 UTC] PHP Warning:  Undefined array key "index_type" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3069
+[14-Nov-2025 06:46:44 UTC] PHP Warning:  Undefined array key "index_name" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3075
+[14-Nov-2025 06:46:44 UTC] PHP Warning:  Undefined array key "index_columns" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3078
+[14-Nov-2025 06:46:44 UTC] PHP Warning:  Undefined array key "column_name" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3107
+[14-Nov-2025 06:46:44 UTC] WordPress database error You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(``)' at line 1 for query ALTER TABLE wp_st_employees ADD  `` (``) made by activate_plugin, do_action('activate_st-it-stock-management-full/st-it-stock-management.php'), WP_Hook->do_action, WP_Hook->apply_filters, ST_IT_Stock_Management::activate, dbDelta
+[14-Nov-2025 06:46:44 UTC] PHP Warning:  Undefined array key "index_type" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3069
+[14-Nov-2025 06:46:44 UTC] PHP Warning:  Undefined array key "index_name" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3075
+[14-Nov-2025 06:46:44 UTC] PHP Warning:  Undefined array key "index_columns" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3078
+[14-Nov-2025 06:46:44 UTC] PHP Warning:  Undefined array key "column_name" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3107
+[14-Nov-2025 06:46:44 UTC] WordPress database error You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(``)' at line 1 for query ALTER TABLE wp_st_asset_assign ADD  `` (``) made by activate_plugin, do_action('activate_st-it-stock-management-full/st-it-stock-management.php'), WP_Hook->do_action, WP_Hook->apply_filters, ST_IT_Stock_Management::activate, dbDelta
+[14-Nov-2025 06:46:44 UTC] PHP Warning:  Undefined array key "index_type" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3069
+[14-Nov-2025 06:46:44 UTC] PHP Warning:  Undefined array key "index_name" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3075
+[14-Nov-2025 06:46:44 UTC] PHP Warning:  Undefined array key "index_columns" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3078
+[14-Nov-2025 06:46:44 UTC] PHP Warning:  Undefined array key "column_name" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3107
+[14-Nov-2025 06:46:44 UTC] WordPress database error You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(``)' at line 1 for query ALTER TABLE wp_st_repair ADD  `` (``) made by activate_plugin, do_action('activate_st-it-stock-management-full/st-it-stock-management.php'), WP_Hook->do_action, WP_Hook->apply_filters, ST_IT_Stock_Management::activate, dbDelta
+[14-Nov-2025 06:46:44 UTC] PHP Warning:  Undefined array key "index_type" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3069
+[14-Nov-2025 06:46:44 UTC] PHP Warning:  Undefined array key "index_name" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3075
+[14-Nov-2025 06:46:44 UTC] PHP Warning:  Undefined array key "index_columns" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3078
+[14-Nov-2025 06:46:44 UTC] PHP Warning:  Undefined array key "column_name" in C:\new xampp\htdocs\wordpress\wp-admin\includes\upgrade.php on line 3107
+[14-Nov-2025 06:46:44 UTC] WordPress database error You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(``)' at line 1 for query ALTER TABLE wp_st_activity_logs ADD  `` (``) made by activate_plugin, do_action('activate_st-it-stock-management-full/st-it-stock-management.php'), WP_Hook->do_action, WP_Hook->apply_filters, ST_IT_Stock_Management::activate, dbDelta
+[14-Nov-2025 06:46:57 UTC] PHP Warning:  require(assets-admin-page.php): Failed to open stream: No such file or directory in C:\new xampp\htdocs\wordpress\wp-content\plugins\st-it-stock-management-full\includes\class-st-it-stock-management.php on line 81
+[14-Nov-2025 06:46:57 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'assets-admin-page.php' (include_path='C:\new xampp\php\PEAR') in C:\new xampp\htdocs\wordpress\wp-content\plugins\st-it-stock-management-full\includes\class-st-it-stock-management.php:81
+Stack trace:
+#0 C:\new xampp\htdocs\wordpress\wp-includes\class-wp-hook.php(324): ST_IT_Stock_Management::assets_page('')
+#1 C:\new xampp\htdocs\wordpress\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#2 C:\new xampp\htdocs\wordpress\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#3 C:\new xampp\htdocs\wordpress\wp-admin\admin.php(260): do_action('it-stock_page_s...')
+#4 {main}
+  thrown in C:\new xampp\htdocs\wordpress\wp-content\plugins\st-it-stock-management-full\includes\class-st-it-stock-management.php on line 81
+[14-Nov-2025 06:47:00 UTC] PHP Warning:  require(employees-admin-page.php): Failed to open stream: No such file or directory in C:\new xampp\htdocs\wordpress\wp-content\plugins\st-it-stock-management-full\includes\class-st-it-stock-management.php on line 82
+[14-Nov-2025 06:47:00 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'employees-admin-page.php' (include_path='C:\new xampp\php\PEAR') in C:\new xampp\htdocs\wordpress\wp-content\plugins\st-it-stock-management-full\includes\class-st-it-stock-management.php:82
+Stack trace:
+#0 C:\new xampp\htdocs\wordpress\wp-includes\class-wp-hook.php(324): ST_IT_Stock_Management::employees_page('')
+#1 C:\new xampp\htdocs\wordpress\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#2 C:\new xampp\htdocs\wordpress\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#3 C:\new xampp\htdocs\wordpress\wp-admin\admin.php(260): do_action('it-stock_page_s...')
+#4 {main}
+  thrown in C:\new xampp\htdocs\wordpress\wp-content\plugins\st-it-stock-management-full\includes\class-st-it-stock-management.php on line 82
+[14-Nov-2025 06:47:02 UTC] PHP Warning:  require(assign-assets-admin-page.php): Failed to open stream: No such file or directory in C:\new xampp\htdocs\wordpress\wp-content\plugins\st-it-stock-management-full\includes\class-st-it-stock-management.php on line 83
+[14-Nov-2025 06:47:02 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'assign-assets-admin-page.php' (include_path='C:\new xampp\php\PEAR') in C:\new xampp\htdocs\wordpress\wp-content\plugins\st-it-stock-management-full\includes\class-st-it-stock-management.php:83
+Stack trace:
+#0 C:\new xampp\htdocs\wordpress\wp-includes\class-wp-hook.php(324): ST_IT_Stock_Management::assign_assets_page('')
+#1 C:\new xampp\htdocs\wordpress\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#2 C:\new xampp\htdocs\wordpress\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#3 C:\new xampp\htdocs\wordpress\wp-admin\admin.php(260): do_action('it-stock_page_s...')
+#4 {main}
+  thrown in C:\new xampp\htdocs\wordpress\wp-content\plugins\st-it-stock-management-full\includes\class-st-it-stock-management.php on line 83
+[14-Nov-2025 06:47:03 UTC] PHP Warning:  require(repair-admin-page.php): Failed to open stream: No such file or directory in C:\new xampp\htdocs\wordpress\wp-content\plugins\st-it-stock-management-full\includes\class-st-it-stock-management.php on line 84
+[14-Nov-2025 06:47:03 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'repair-admin-page.php' (include_path='C:\new xampp\php\PEAR') in C:\new xampp\htdocs\wordpress\wp-content\plugins\st-it-stock-management-full\includes\class-st-it-stock-management.php:84
+Stack trace:
+#0 C:\new xampp\htdocs\wordpress\wp-includes\class-wp-hook.php(324): ST_IT_Stock_Management::repair_page('')
+#1 C:\new xampp\htdocs\wordpress\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#2 C:\new xampp\htdocs\wordpress\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#3 C:\new xampp\htdocs\wordpress\wp-admin\admin.php(260): do_action('it-stock_page_s...')
+#4 {main}
+  thrown in C:\new xampp\htdocs\wordpress\wp-content\plugins\st-it-stock-management-full\includes\class-st-it-stock-management.php on line 84
+[14-Nov-2025 06:47:05 UTC] PHP Warning:  require(logs-admin-page.php): Failed to open stream: No such file or directory in C:\new xampp\htdocs\wordpress\wp-content\plugins\st-it-stock-management-full\includes\class-st-it-stock-management.php on line 85
+[14-Nov-2025 06:47:05 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'logs-admin-page.php' (include_path='C:\new xampp\php\PEAR') in C:\new xampp\htdocs\wordpress\wp-content\plugins\st-it-stock-management-full\includes\class-st-it-stock-management.php:85
+Stack trace:
+#0 C:\new xampp\htdocs\wordpress\wp-includes\class-wp-hook.php(324): ST_IT_Stock_Management::logs_page('')
+#1 C:\new xampp\htdocs\wordpress\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#2 C:\new xampp\htdocs\wordpress\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#3 C:\new xampp\htdocs\wordpress\wp-admin\admin.php(260): do_action('it-stock_page_s...')
+#4 {main}
+  thrown in C:\new xampp\htdocs\wordpress\wp-content\plugins\st-it-stock-management-full\includes\class-st-it-stock-management.php on line 85
+[14-Nov-2025 06:47:52 UTC] PHP Warning:  Undefined variable $assignments_table in C:\new xampp\htdocs\wordpress\wp-content\plugins\st-stock-management\st-stock-management.php on line 122
+[14-Nov-2025 06:47:52 UTC] WordPress database error You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ADD CONSTRAINT fk_asset_id FOREIGN KEY (asset_id) REFERENCES wp_stock_managem...' at line 2 for query ALTER TABLE 
+     ADD CONSTRAINT fk_asset_id FOREIGN KEY (asset_id) REFERENCES wp_stock_management(id) ON DELETE CASCADE made by activate_plugin, do_action('activate_st-stock-management/st-stock-management.php'), WP_Hook->do_action, WP_Hook->apply_filters, activate_st_stock_management
+[14-Nov-2025 06:47:52 UTC] PHP Warning:  Undefined variable $assignments_table in C:\new xampp\htdocs\wordpress\wp-content\plugins\st-stock-management\st-stock-management.php on line 127
+[14-Nov-2025 06:47:52 UTC] PHP Warning:  Undefined variable $employees_table in C:\new xampp\htdocs\wordpress\wp-content\plugins\st-stock-management\st-stock-management.php on line 128
+[14-Nov-2025 06:47:52 UTC] WordPress database error You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ADD CONSTRAINT fk_employee_id FOREIGN KEY (employee_id) REFERENCES (id) ON DE...' at line 2 for query ALTER TABLE 
+     ADD CONSTRAINT fk_employee_id FOREIGN KEY (employee_id) REFERENCES (id) ON DELETE CASCADE made by activate_plugin, do_action('activate_st-stock-management/st-stock-management.php'), WP_Hook->do_action, WP_Hook->apply_filters, activate_st_stock_management
+[14-Nov-2025 06:47:52 UTC] Stock Management Tables Creation Results: Array
+(
+    [wp_admin_emp_stock_management] => Table already exists
+    [wp_admin_emp_stock_management_logs] => Table already exists
+    [wp_admin_item_stock_management] => Table already exists
+    [wp_admin_item_stock_management_logs] => Table already exists
+    [wp_admin_stock_management_log] => Table already exists
+    [wp_asset_assign_front_log] => Table already exists
+    [wp_emp_asset_assign_table] => Table already exists
+    [wp_emp_stock_management] => Table already exists
+    [wp_item_front_logs] => Table already exists
+    [wp_repaire_front_log] => Table already exists
+    [wp_repaire_stock_management] => Table already exists
+    [wp_stock_management] => Table already exists
+    [wp_st_stock_items_name] => Table already exists
+    [wp_st_stock_management] => Table already exists
+)
+
+[14-Nov-2025 06:54:49 UTC] Automatic updates starting...
+[14-Nov-2025 06:54:49 UTC]   Automatic plugin updates starting...
+[14-Nov-2025 06:54:49 UTC]   Automatic plugin updates complete.
+[14-Nov-2025 06:54:49 UTC] Automatic updates complete.
