@@ -76,75 +76,7 @@ add_action('wp_ajax_nopriv_get_repair_items', 'ajax_get_repair_items');
 add_action('wp_ajax_nopriv_update_repair_item', 'ajax_update_repair_item');
 add_action('wp_ajax_nopriv_delete_repair_item', 'ajax_delete_repair_item');
 
-/**
- * Create front-end log tables
- */
-// function create_front_log_tables() {
-//     global $wpdb;
-//     require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-    
-//     $charset_collate = $wpdb->get_charset_collate();
 
-//     // Item front logs table
-//     $item_log_table = $wpdb->prefix . 'item_front_logs';
-//     $item_log_sql = "CREATE TABLE $item_log_table (
-//         id mediumint(9) NOT NULL AUTO_INCREMENT,
-//         action varchar(50) NOT NULL,
-//         item_id mediumint(9) NOT NULL,
-//         user_id mediumint(9) NOT NULL,
-//         user_name varchar(100) NOT NULL,
-//         old_data text NULL,
-//         new_data text NULL,
-//         ip_address varchar(45) NOT NULL,
-//         user_agent text NOT NULL,
-//         created_at datetime DEFAULT CURRENT_TIMESTAMP,
-//         PRIMARY KEY (id),
-//         KEY item_id (item_id),
-//         KEY user_id (user_id),
-//         KEY action (action)
-//     ) $charset_collate;";
-//     dbDelta($item_log_sql);
-
-//     // Asset assign front log table
-//     $asset_log_table = $wpdb->prefix . 'asset_assign_front_log';
-//     $asset_log_sql = "CREATE TABLE $asset_log_table (
-//         id mediumint(9) NOT NULL AUTO_INCREMENT,
-//         action varchar(50) NOT NULL,
-//         assign_id mediumint(9) NOT NULL,
-//         emp_id mediumint(9) NOT NULL,
-//         user_id mediumint(9) NOT NULL,
-//         user_name varchar(100) NOT NULL,
-//         asset_data text NOT NULL,
-//         ip_address varchar(45) NOT NULL,
-//         user_agent text NOT NULL,
-//         created_at datetime DEFAULT CURRENT_TIMESTAMP,
-//         PRIMARY KEY (id),
-//         KEY assign_id (assign_id),
-//         KEY emp_id (emp_id),
-//         KEY user_id (user_id)
-//     ) $charset_collate;";
-//     dbDelta($asset_log_sql);
-
-//     // Repair front log table
-//     $repair_log_table = $wpdb->prefix . 'repaire_front_log';
-//     $repair_log_sql = "CREATE TABLE $repair_log_table (
-//         id mediumint(9) NOT NULL AUTO_INCREMENT,
-//         action varchar(50) NOT NULL,
-//         repair_id mediumint(9) NOT NULL,
-//         user_id mediumint(9) NOT NULL,
-//         user_name varchar(100) NOT NULL,
-//         old_data text NULL,
-//         new_data text NULL,
-//         ip_address varchar(45) NOT NULL,
-//         user_agent text NOT NULL,
-//         created_at datetime DEFAULT CURRENT_TIMESTAMP,
-//         PRIMARY KEY (id),
-//         KEY repair_id (repair_id),
-//         KEY user_id (user_id),
-//         KEY action (action)
-//     ) $charset_collate;";
-//     dbDelta($repair_log_sql);
-// }
 
 /**
  * Create stock management table if needed (runs on plugin activation)
@@ -396,7 +328,9 @@ function stock_management_shortcode($atts) {
             <!-- Item Sub Tabs -->
             <div class="item-sub-tabs">
                 <button class="item-sub-tab-btn active" onclick="showItemSubTab('add-item-tab', this)">➕ Add Item</button>
-                <button class="item-sub-tab-btn" onclick="showItemSubTab('list-items-tab', this)">📋 List Items</button>
+                <button class="item-sub-tab-btn" onclick="showItemSubTab('view-list-items-tab', this)">📊 View Grouped Items</button>
+                <button class="item-sub-tab-btn" onclick="showItemSubTab('list-items-tab', this)">📋 Edit List Items</button>
+                
             </div>
 
             <!-- Add Item Sub Tab -->
@@ -455,7 +389,7 @@ function stock_management_shortcode($atts) {
                                     <option value="">Select Status</option>
                                     <option value="Active">Active</option>
                                     <option value="Inactive">Inactive</option>
-                                    <option value="Maintenance">In Stock</option>
+                                    <option value="In Stock">In Stock</option>
     
                                 </select>
                             </div>
@@ -548,8 +482,7 @@ function stock_management_shortcode($atts) {
                                     <option value="">Select Status</option>
                                     <option value="Active">Active</option>
                                     <option value="Inactive">Inactive</option>
-                                    <option value="Maintenance">Under Maintenance</option>
-                                    <option value="Retired">Retired</option>
+                                    <option value="In Stock">In Stock</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -587,7 +520,22 @@ function stock_management_shortcode($atts) {
             <div id="list-items-tab" class="item-sub-content">
                 <div class="items-list-section">
                     <h4>📋 Items List</h4>
-                    <div id="stock-items-container">
+                    
+                    <!-- Search Box -->
+                    <div class="search-container" style="margin-bottom: 20px;">
+                        <input type="text" id="item-search" placeholder="🔍 Search items..." style="
+                            padding: 10px 15px;
+                            border: 2px solid #ddd;
+                            border-radius: 25px;
+                            width: 300px;
+                            max-width: 100%;
+                            font-size: 14px;
+                            outline: none;
+                            transition: all 0.3s ease;
+                        " onkeyup="filterItems()">
+                    </div>
+                    
+                    <div id="stock-items-container" style="max-height: 500px; overflow-y: auto; border: 1px solid #ddd; border-radius: 8px; padding: 15px;">
                         <div style="text-align: center; padding: 40px;">
                             <div style="font-size: 48px; margin-bottom: 20px;">⏳</div>
                             <p>Loading items...</p>
@@ -595,7 +543,37 @@ function stock_management_shortcode($atts) {
                     </div>
                 </div>
             </div>
-        </div>
+
+            <!-- View List Items Sub Tab (NEW) -->
+            <div id="view-list-items-tab" class="item-sub-content">
+                <div class="items-list-section">
+                    <h4>📊 Grouped Items Summary</h4>
+                    
+                    <!-- Search Box for Grouped Items -->
+                    <div class="search-container" style="margin-bottom: 20px;">
+                        <input type="text" id="grouped-item-search" placeholder="🔍 Search grouped items..." style="
+                            padding: 10px 15px;
+                            border: 2px solid #ddd;
+                            border-radius: 25px;
+                            width: 300px;
+                            max-width: 100%;
+                            font-size: 14px;
+                            outline: none;
+                            transition: all 0.3s ease;
+                        " onkeyup="filterGroupedItems()">
+                    </div>
+                    
+                    <div id="grouped-stock-items-container" style="max-height: 500px; overflow-y: auto; border: 1px solid #ddd; border-radius: 8px; padding: 15px;">
+                        <div style="text-align: center; padding: 40px;">
+                            <div style="font-size: 48px; margin-bottom: 20px;">⏳</div>
+                            <p>Loading grouped items...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- Close Item Tab -->
+
+        <!-- Employee Tab -->
 
         <!-- Employee Tab -->
         <div id="employee-tab" class="tab-content">
@@ -779,6 +757,104 @@ function stock_management_shortcode($atts) {
             let repairDataTable = null;
             let currentEmpId = null;
 
+            // NEW: Filter items function
+            function filterItems() {
+                const searchTerm = document.getElementById('item-search').value.toLowerCase();
+                
+                // Try multiple selectors
+                const table = document.getElementById('stock-items-table') || 
+                              document.querySelector('.stock-table');
+                
+                if (!table) return;
+                
+                const rows = table.getElementsByTagName('tr');
+                
+                for (let i = 1; i < rows.length; i++) {
+                    const row = rows[i];
+                    const cells = row.getElementsByTagName('td');
+                    let found = false;
+                    
+                    for (let j = 0; j < cells.length; j++) {
+                        const cellText = cells[j].textContent.toLowerCase();
+                        if (cellText.includes(searchTerm)) {
+                            found = true;
+                            break;
+                        }
+                    }
+                    
+                    row.style.display = found ? '' : 'none';
+                }
+            }
+            // NEW: Filter grouped items function
+            function filterGroupedItems() {
+                const searchTerm = document.getElementById('grouped-item-search').value.toLowerCase();
+                const table = document.getElementById('grouped-stock-items-table');
+                
+                if (!table) return;
+                
+                const rows = table.getElementsByTagName('tr');
+                
+                for (let i = 1; i < rows.length; i++) {
+                    const row = rows[i];
+                    const cells = row.getElementsByTagName('td');
+                    let found = false;
+                    
+                    for (let j = 0; j < cells.length; j++) {
+                        const cellText = cells[j].textContent.toLowerCase();
+                        if (cellText.includes(searchTerm)) {
+                            found = true;
+                            break;
+                        }
+                    }
+                    
+                    row.style.display = found ? '' : 'none';
+                }
+            }
+
+            // NEW: Load grouped stock items
+            function loadGroupedStockItems() {
+                jQuery.ajax({
+                    url: ajaxUrl,
+                    type: 'POST',
+                    data: {
+                        action: 'get_grouped_stock_items',
+                        nonce: nonce
+                    },
+                    beforeSend: function() {
+                        document.getElementById('grouped-stock-items-container').innerHTML = 
+                            '<div style="text-align: center; padding: 20px;">Loading grouped items...</div>';
+                    },
+                    success: function(response) {
+                        let responseData = response;
+                        
+                        if (typeof response === 'string') {
+                            const jsonMatch = response.match(/\{.*\}/s);
+                            if (jsonMatch) {
+                                try {
+                                    responseData = JSON.parse(jsonMatch[0]);
+                                } catch (e) {
+                                    showSweetAlert('Data format error', 'error');
+                                    return;
+                                }
+                            } else {
+                                showSweetAlert('Invalid response format', 'error');
+                                return;
+                            }
+                        }
+                        
+                        if (responseData.success) {
+                            document.getElementById('grouped-stock-items-container').innerHTML = responseData.data.html;
+                        } else {
+                            showSweetAlert('Error: ' + responseData.data, 'error');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        showSweetAlert('Failed to load grouped items. Please try again.', 'error');
+                    }
+                });
+            }
+
+
             jQuery(document).ready(function($) {
                 // Load stock items on page load
                 loadStockItems();
@@ -866,6 +942,10 @@ function stock_management_shortcode($atts) {
                 // If switching to list tab, reload items
                 if (tabName === 'list-items-tab') {
                     loadStockItems();
+                }
+                // If switching to grouped items tab, load grouped items
+                if (tabName === 'view-list-items-tab') {
+                    loadGroupedStockItems();
                 }
             }
 
@@ -1096,7 +1176,7 @@ function stock_management_shortcode($atts) {
                             responseData.data.forEach(item => {
                                 const option = document.createElement('option');
                                 option.value = item.serial_number;
-                                option.textContent = `${item.serial_number} - ${item.asset_type} - ${item.brand_model}`;
+                                option.textContent = `${item.serial_number}`;
                                 option.setAttribute('data-asset-type', item.asset_type);
                                 option.setAttribute('data-brand-model', item.brand_model);
                                 select.appendChild(option);
@@ -1170,7 +1250,7 @@ function stock_management_shortcode($atts) {
                             // FIX: Initialize with delay
                             setTimeout(function() {
                                 initializeDataTable();
-                            }, 100);
+                            }, 1000);
                         } else {
                             showSweetAlert('Error: ' + responseData.data, 'error');
                         }
@@ -1193,7 +1273,7 @@ function stock_management_shortcode($atts) {
                                     
                                     setTimeout(function() {
                                         initializeDataTable();
-                                    }, 100);
+                                    }, 1000);
                                     return;
                                 }
                             } catch (e) {}
@@ -1324,7 +1404,7 @@ function stock_management_shortcode($atts) {
                     return;
                 }
 
-                showItemSubTab('edit-item-tab', document.querySelector('.item-sub-tab-btn:nth-child(2)'));
+                showItemSubTab('edit-item-tab', document.querySelector('.item-sub-tab-btn:nth-child(3)'));
 
                 // FIX: Use correct element IDs for edit form
                 document.getElementById('edit_asset_type').value = item.asset_type || '';
@@ -1349,7 +1429,7 @@ function stock_management_shortcode($atts) {
                 document.getElementById('edit_item_id').value = '';
                 document.getElementById('serial_error_edit').style.display = 'none';
                 document.getElementById('edit_submit_button').disabled = false;
-                showItemSubTab('list-items-tab', document.querySelector('.item-sub-tab-btn:nth-child(2)'));
+                showItemSubTab('list-items-tab', document.querySelector('.item-sub-tab-btn:nth-child(3)'));
             }
 
             function deleteItem(id) {
@@ -2437,7 +2517,7 @@ function ajax_get_stock_items() {
             $html .= '<td class="' . esc_attr($status_class) . '">' . esc_html($row->status) . '</td>';
             $html .= '<td>' . esc_html($row->location) . '</td>';
             $html .= '<td>' . esc_html($row->date_purchased) . '</td>';
-            $html .= '<td>';
+            $html .= '<td style="display:flex;">';
             $html .= '<button class="btn btn-warning" onclick="editItem(' . intval($row->id) . ')">✏️ Edit</button> ';
             $html .= '<button class="btn btn-danger" onclick="deleteItem(' . intval($row->id) . ')">🗑️ Delete</button>';
             $html .= '</td>';
@@ -2612,16 +2692,7 @@ function ajax_get_brands_by_asset() {
             "SELECT  CONCAT(brand_model, ' (', serial_number, ')') as display_text FROM $table_name WHERE asset_type = %s AND brand_model IS NOT NULL AND brand_model != '' ORDER BY brand_model ASC",
             $asset_type
         ));
-
-//         $results = $wpdb->get_results($wpdb->prepare(
-//     "SELECT brand_model, serial_number 
-//      FROM $table_name 
-//      WHERE asset_type = %s AND brand_model IS NOT NULL AND brand_model != '' 
-//      ORDER BY brand_model ASC, serial_number ASC",
-//     $asset_type
-// ));
-
-       
+  
 
         if (empty($brand_models)) {
             echo '<option value="">No brands found</option>';
@@ -2968,4 +3039,93 @@ function ajax_delete_custom_field() {
     header('Content-Type: application/json');
     echo json_encode(array('success' => false, 'data' => 'Custom fields feature coming soon'));
     exit;
+}
+
+
+
+add_action('wp_ajax_get_grouped_stock_items', 'ajax_get_grouped_stock_items');
+add_action('wp_ajax_nopriv_get_grouped_stock_items', 'ajax_get_grouped_stock_items');
+
+
+// NEW AJAX FUNCTION: Get grouped stock items
+function ajax_get_grouped_stock_items() {
+    while (ob_get_level()) { ob_end_clean(); }
+    header('Content-Type: application/json');
+    
+    try {
+        if (!wp_verify_nonce($_POST['nonce'], 'stock_management_ajax')) {
+            echo json_encode(array('success' => false, 'data' => 'Security verification failed'));
+            exit;
+        }
+
+        global $wpdb;
+        $table_name = $wpdb->prefix . 'stock_management';
+
+        if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
+            create_stock_management_table();
+        }
+
+        // Group by asset_type and brand_model, calculate totals
+        $results = $wpdb->get_results("
+            SELECT 
+                asset_type,
+                brand_model,
+                COUNT(*) as total_quantity,
+                SUM(price) as total_price,
+                GROUP_CONCAT(id) as item_ids
+            FROM $table_name 
+            GROUP BY asset_type, brand_model 
+            ORDER BY asset_type, brand_model
+        ");
+       
+        if (empty($results)) {
+            echo json_encode(array(
+                'success' => true,
+                'data' => array(
+                    'html' => '<p>No stock items found. Add some items to get started!</p>',
+                    'items' => array()
+                )
+            ));
+            exit;
+        }
+
+        $html = '<table id="grouped-stock-items-table" class="stock-table" style="width:100%">';
+        $html .= '<thead><tr>';
+        $html .= '<th>ID</th>';
+        $html .= '<th>Asset Type</th>';
+        $html .= '<th>Brand/Model</th>';
+        $html .= '<th>Total Quantity</th>';
+        $html .= '<th>Total Price</th>';
+        $html .= '</tr></thead><tbody>';
+
+        $counter = 1;
+        foreach ($results as $row) {
+            $html .= '<tr>';
+            $html .= '<td>' . intval($counter) . '</td>';
+            $html .= '<td>' . esc_html($row->asset_type) . '</td>';
+            $html .= '<td>' . esc_html($row->brand_model) . '</td>';
+            $html .= '<td>' . intval($row->total_quantity) . '</td>';
+            $html .= '<td>₹' . number_format((float) $row->total_price, 2) . '</td>';
+            $html .= '</tr>';
+            $counter++;
+        }
+
+        $html .= '</tbody></table>';
+
+        echo json_encode(array(
+            'success' => true,
+            'data' => array(
+                'html' => $html,
+                'items' => $results
+            )
+        ));
+        exit;
+
+    } catch (Exception $e) {
+        echo json_encode(array(
+            'success' => false,
+            'data' => 'Database error: ' . $e->getMessage()
+        ));
+        exit;
+    }
 }
