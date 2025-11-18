@@ -4,10 +4,13 @@
  * Add this to your plugin file
  */
 
+
 // Prevent direct access
 if (!defined('ABSPATH')) {
     exit;
 }
+
+
 
 // Isolate AJAX calls from other plugins/themes
 if (defined('DOING_AJAX') && DOING_AJAX) {
@@ -163,7 +166,7 @@ function create_repaire_stock_management_table() {
 add_action('wp_enqueue_scripts', 'stock_management_enqueue_scripts');
 function stock_management_enqueue_scripts() {
     // CSS
-    wp_enqueue_style('stock-management-style', plugin_dir_url(__FILE__) . 'assets/css/style.css', array(), '1.0.0');
+   wp_enqueue_style('stock-management-style', plugin_dir_url(__FILE__) . '../assets/css/st-style.css', array(), '1.0.0');
 }
 
 /**
@@ -290,6 +293,49 @@ function log_repair_action($action, $repair_id, $old_data = null, $new_data = nu
 }
 
 function stock_management_shortcode($atts) {
+
+        // If user is not logged in, show login form directly
+    if (!is_user_logged_in()) {
+        ob_start();
+        ?>
+        <div style="max-width: 400px; margin: 50px auto; padding: 30px; background: white; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+            <h3 style="text-align: center; margin-bottom: 30px;">🔐 Login to Stock System</h3>
+            
+            <?php if (isset($_GET['login']) && $_GET['login'] == 'failed'): ?>
+                <div style="padding: 10px; background: #ffebee; color: #c62828; border-radius: 5px; margin-bottom: 20px; text-align: center;">
+                    ❌ Login failed. Please try again.
+                </div>
+            <?php endif; ?>
+            
+            <?php if (isset($_GET['loggedout']) && $_GET['loggedout'] == 'success'): ?>
+                <div style="padding: 10px; background: #d4edda; color: #155724; border-radius: 5px; margin-bottom: 20px; text-align: center;">
+                    ✅ You have been logged out successfully.
+                </div>
+            <?php endif; ?>
+            
+            <form method="post" action="<?php echo esc_url(site_url('wp-login.php', 'login_post')); ?>">
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 5px; font-weight: bold;">Username</label>
+                    <input type="text" name="log" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" required>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 5px; font-weight: bold;">Password</label>
+                    <input type="password" name="pwd" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" required>
+                </div>
+                
+                <input type="hidden" name="redirect_to" value="<?php echo esc_url(home_url()); ?>">
+                
+                <button type="submit" style="width: 100%; padding: 12px; background: #667eea; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">
+                    🚀 Login to Stock System
+                </button>
+            </form>
+            
+        </div>
+        <?php
+        return ob_get_clean();
+    }
+
     // Ensure jQuery is loaded
     wp_enqueue_script('jquery');
     
@@ -312,18 +358,18 @@ function stock_management_shortcode($atts) {
 
         <div class="stock-header">
             <h2>🏢 Stock Management System</h2>
-            <p>Efficiently manage your inventory with advanced features</p>
+            <p>Track, assign, and maintain your assets with powerful automation tools</p>
         </div>
 
         <div class="stock-tabs">
             <button class="tab-btn active" onclick="showMainTab('item-tab', this)">📦 Item</button>
             <button class="tab-btn" onclick="showMainTab('employee-tab', this)">👨‍💼 Employee</button>
-            <button class="tab-btn" onclick="showMainTab('repaire-tab', this)">🔧 Repaire</button>
+            <button class="tab-btn" onclick="showMainTab('repaire-tab', this)">🔧 Repair</button>
         </div>
 
         <!-- Item Tab -->
         <div id="item-tab" class="tab-content active">
-            <h3>📦 Item Management</h3>
+            <h3>📦 Items Management</h3>
             
             <!-- Item Sub Tabs -->
             <div class="item-sub-tabs">
@@ -713,10 +759,12 @@ function stock_management_shortcode($atts) {
 
         <!-- Assign Assets Popup -->
         <div id="assign-assets-popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center;">
-            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 15px; width: 90%; max-width: 800px; max-height: 90vh; overflow-y: auto;">
+           
+            <div style="padding: 30px; border-radius: 15px; width: 90%; max-width: 800px; max-height: 90vh; overflow-y: auto;">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                    <h3 style="margin: 0; color: white;">Assign Assets to Employee</h3>
-                    <button type="button" onclick="closeAssignPopup()" style="background: none; border: none; color: white; font-size: 24px; cursor: pointer;">×</button>
+                     <h2>Assign Assets to Employee</h2>
+                    <!-- <h3 style="margin: 0; color: white;">Assign Assets to Employee</h3> -->
+                    <button type="button"class="assign-pop-close-btn" onclick="closeAssignPopup()" >×</button>
                 </div>
                 
                 <div class="assign-assets-container">
@@ -3128,4 +3176,12 @@ function ajax_get_grouped_stock_items() {
         ));
         exit;
     }
+}
+
+
+
+add_action('wp_logout', 'st_redirect_after_logout');
+function st_redirect_after_logout() {
+    wp_safe_redirect(home_url());
+    exit();
 }

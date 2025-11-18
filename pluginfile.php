@@ -1,44 +1,68 @@
 <?php
-// This script creates the plugin structure
-$plugin_dir = 'st-stock-management';
-
-$files = [
-    'st-stock-management.php' => 'MAIN_PLUGIN_FILE_CONTENT',
-    'includes/database.php' => 'DATABASE_FILE_CONTENT',
-    'includes/admin/admin-pages.php' => 'ADMIN_PAGES_CONTENT',
-    'includes/admin/item-management.php' => 'ITEM_MANAGEMENT_CONTENT',
-    'includes/admin/emp-management.php' => 'EMP_MANAGEMENT_CONTENT',
-    'includes/frontend/frontend-pages.php' => 'FRONTEND_PAGES_CONTENT',
-    'includes/frontend/item-frontend.php' => 'ITEM_FRONTEND_CONTENT',
-    'includes/frontend/emp-frontend.php' => 'EMP_FRONTEND_CONTENT',
-    'includes/assets/css/admin-style.css' => 'ADMIN_CSS_CONTENT',
-    'includes/assets/css/frontend-style.css' => 'FRONTEND_CSS_CONTENT',
-    'includes/assets/js/admin-script.js' => 'ADMIN_JS_CONTENT',
-    'includes/assets/js/frontend-script.js' => 'FRONTEND_JS_CONTENT',
-    'README.txt' => 'README_CONTENT'
-];
-
-foreach ($files as $file_path => $content_placeholder) {
-    $full_path = $plugin_dir . '/' . $file_path;
+function create_stock_management_structure() {
+    $base_dir = 'st-stock-management';
     
-    // Create directory if needed
-    $dir = dirname($full_path);
-    if (!is_dir($dir)) {
-        mkdir($dir, 0755, true);
+    // Define all files with their paths
+    $files = [
+        // Main plugin file
+        'st-stock-management.php' => "<?php\n// Main Plugin File\n?>",
+        
+        // Admin files
+        'admin/class-st-stock-management-admin.php' => "<?php\n// Admin Class\n?>",
+        'admin/admin-asset-types.php' => "<?php\n// Asset Types Management\n?>",
+        'admin/admin-emp-management.php' => "<?php\n// Employee Management\n?>",
+        'admin/admin-stock-items-list.php' => "<?php\n// Stock Items List\n?>",
+        'admin/admin-repaire-list.php' => "<?php\n// Repair List Management\n?>",
+        'admin/partials/admin-dashboard.php' => "<?php\n// Admin Dashboard Partial\n?>",
+        'admin/index.php' => "<?php\n// Silence is golden\n?>",
+        
+        // Front files
+        'front/class-st-stock-management-shortcode.php' => "<?php\n// Shortcode Class\n?>",
+        'front/class-st-item-management.php' => "<?php\n// Item Management Class\n?>",
+        'front/class-st-employee-management.php' => "<?php\n// Employee Management Class\n?>",
+        'front/class-st-repair-management.php' => "<?php\n// Repair Management Class\n?>",
+        'front/class-st-ajax-handler.php' => "<?php\n// AJAX Handler Class\n?>",
+        'front/class-st-database-logger.php' => "<?php\n// Database Logger Class\n?>",
+        'front/index.php' => "<?php\n// Silence is golden\n?>",
+        
+        // Front logs
+        'front-logs/front-repaire-logs.php' => "<?php\n// Front Repair Logs\n?>",
+        'front-logs/front-item-logs.php' => "<?php\n// Front Item Logs\n?>",
+        'front-logs/front-emp-asset-assign-log.php' => "<?php\n// Front Employee Asset Assignment Logs\n?>",
+        'front-logs/index.php' => "<?php\n// Silence is golden\n?>",
+        
+        // Admin logs
+        'admin-logs/asset-log-management.php' => "<?php\n// Asset Log Management\n?>",
+        'admin-logs/emp-log-management.php' => "<?php\n// Employee Log Management\n?>",
+        'admin-logs/index.php' => "<?php\n// Silence is golden\n?>",
+        
+        // Assets
+        'assets/css/st-style.css' => "/* ST Stock Management Styles */",
+        'assets/css/index.php' => "<?php\n// Silence is golden\n?>",
+        'assets/js/st-script.js' => "// ST Stock Management JavaScript",
+        'assets/js/index.php' => "<?php\n// Silence is golden\n?>",
+        'assets/index.php' => "<?php\n// Silence is golden\n?>"
+    ];
+    
+    // Create all files
+    foreach ($files as $file_path => $content) {
+        $full_path = $base_dir . '/' . $file_path;
+        
+        // Create directory if needed
+        $dir = dirname($full_path);
+        if (!is_dir($dir)) {
+            mkdir($dir, 0755, true);
+            echo "Created directory: $dir\n";
+        }
+        
+        // Write file
+        file_put_contents($full_path, $content);
+        echo "Created: $full_path\n";
     }
     
-    // Get the actual content from the files above
-    $actual_content = get_file_content($file_path);
-    
-    // Write file
-    file_put_contents($full_path, $actual_content);
-    echo "Created: $full_path\n";
+    echo "\n✅ Plugin structure created successfully in '$base_dir/' folder!\n";
 }
 
-echo "Plugin structure created! Now zip the '$plugin_dir' folder.\n";
-
-function get_file_content($filename) {
-    // You would replace this with the actual content from the files above
-    return "Content for $filename";
-}
+// Run the function
+create_stock_management_structure();
 ?>

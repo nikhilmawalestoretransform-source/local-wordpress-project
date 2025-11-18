@@ -13,9 +13,9 @@
  * @package           St_Stock_Management
  *
  * @wordpress-plugin
- * Plugin Name:       ST Stock Management
+ * Plugin Name:       Stock Management
  * Plugin URI:        https://storetransform.com
- * Description:       Plugin can Manage stock of IT company assets.
+ * Description:       Plugin can Manage stock of IT company assets
  * Version:           1.0.0
  * Author:            storetransform
  * Author URI:        https://storetransform.com/
@@ -27,9 +27,8 @@
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
-	die;
+    die;
 }
-
 
 /**
  * Currently plugin version.
@@ -41,28 +40,23 @@ define( 'ST_STOCK_MANAGEMENT_VERSION', '1.0.0' );
 $thumb_img = plugin_dir_url(__FILE__) . 'assets/images/banner-image.webp';
 
 define( 'ST_STOCK_MANAGEMENT_THUMB', $thumb_img );
+
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-st-stock-management-activator.php
  */
 function activate_st_stock_management() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-st-stock-management-activator.php';
-	St_Stock_Management_Activator::activate();
+    require_once plugin_dir_path( __FILE__ ) . 'includes/class-st-stock-management-activator.php';
+    St_Stock_Management_Activator::activate();
 
-    /* CREATE DB TABLES IF NOT EXISTS */
     global $wpdb;
 
-    // Include the required file for dbDelta function
     require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-
 
     $charset_collate = $wpdb->get_charset_collate();
 
-    // Table names
-    $stock_table = $wpdb->prefix . 'st_stock_management';
-   // $member_table = $wpdb->prefix . 'st_member_management';
+    // Create core tables
     $items_table = $wpdb->prefix . 'st_stock_items_name';
-
     $items_manage = "CREATE TABLE $items_table ( 
         id INT NOT NULL AUTO_INCREMENT,
         item_type VARCHAR(255) NOT NULL,
@@ -70,7 +64,7 @@ function activate_st_stock_management() {
     ) $charset_collate;";
     dbDelta($items_manage);
 
-    // SQL to create the stock management table
+    $stock_table = $wpdb->prefix . 'st_stock_management';
     $stock_table_sql = "CREATE TABLE IF NOT EXISTS $stock_table (
         id INT NOT NULL AUTO_INCREMENT,
         item_id INT DEFAULT NULL,
@@ -81,15 +75,9 @@ function activate_st_stock_management() {
         total_quantity INT NOT NULL,
         PRIMARY KEY (id)
     ) $charset_collate;";
-
     dbDelta($stock_table_sql);
 
-  
-
     $table_name = $wpdb->prefix . 'stock_management';
-    
-    $charset_collate = $wpdb->get_charset_collate();
-    
     $sql = "CREATE TABLE $table_name (
         id mediumint(9) NOT NULL AUTO_INCREMENT,
         asset_type varchar(100) NOT NULL,
@@ -108,49 +96,20 @@ function activate_st_stock_management() {
         updated_at datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         PRIMARY KEY (id)
     ) $charset_collate;";
-    
-    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
     dbDelta($sql);
 
-
-require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-//dbDelta($employees_sql);
-//dbDelta($assignments_sql);
-
-// 4️⃣ Add foreign keys separately
-$wpdb->query(
-    "ALTER TABLE $assignments_table
-     ADD CONSTRAINT fk_asset_id FOREIGN KEY (asset_id) REFERENCES {$wpdb->prefix}stock_management(id) ON DELETE CASCADE"
-);
-
-$wpdb->query(
-    "ALTER TABLE $assignments_table
-     ADD CONSTRAINT fk_employee_id FOREIGN KEY (employee_id) REFERENCES $employees_table(id) ON DELETE CASCADE"
-);
-
-
-    $table_name = $wpdb->prefix . 'member_queries';
-    $notifications_table = $wpdb->prefix . 'admin_notifications';
-    
-    $charset_collate = $wpdb->get_charset_collate();
-    
-    
-    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-    //dbDelta($sql1);
-    //dbDelta($sql2);
-
+    // Create additional tables using the table creator
+    $table_creator = new StockManagementTableCreator();
+    $table_creator->create_tables();
 }
-
-
-
 
 /**
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-st-stock-management-deactivator.php
  */
 function deactivate_st_stock_management() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-st-stock-management-deactivator.php';
-	St_Stock_Management_Deactivator::deactivate();
+    require_once plugin_dir_path( __FILE__ ) . 'includes/class-st-stock-management-deactivator.php';
+    St_Stock_Management_Deactivator::deactivate();
 }
 
 register_activation_hook( __FILE__, 'activate_st_stock_management' );
@@ -162,24 +121,11 @@ register_deactivation_hook( __FILE__, 'deactivate_st_stock_management' );
  */
 require plugin_dir_path( __FILE__ ) . 'includes/class-st-stock-management.php';
 
-/* CREATE SHORTCODE FOR ADD STOCK ENTRY */
-//require plugin_dir_path( __FILE__ ) . 'includes/class-st-stock-management-shortcode.php';
-
-/* CREATE SHORTCODE FOR ADMIN REPORT ABOUT SPENT */
-//require plugin_dir_path( __FILE__ ) . 'includes/class-st-stock-spent-shortcode.php';
-
-/* MEMBER MANAGEMENT START */
-//require plugin_dir_path( __FILE__ ) . 'includes/class-st-stock-usermanage-shortcode.php';
-
-/* MEMBER MANAGEMENT START */
-require plugin_dir_path( __FILE__ ) . 'class-stock_management-shortcode.php';
-
-//require_once plugin_dir_path(__FILE__) . 'includes/class-stock-asset-assignment.php';
-
-//require_once plugin_dir_path(__FILE__) . 'includes/class-stock_query-team-members.php';
+require plugin_dir_path( __FILE__ ) . 'front/class-stock_management-shortcode.php';
 
 $comp_logo = plugins_url('includes/mycompany.png', dirname(__FILE__));
 define( 'ST_STOCK_MANAGEMENT_CMPIMG', $comp_logo );
+
 /**
  * Begins execution of the plugin.
  *
@@ -190,34 +136,24 @@ define( 'ST_STOCK_MANAGEMENT_CMPIMG', $comp_logo );
  * @since    1.0.0
  */
 function run_st_stock_management() {
-
-	$plugin = new St_Stock_Management();
-	$plugin->run();
-
+    $plugin = new St_Stock_Management();
+    $plugin->run();
 }
-
 
 run_st_stock_management();
 
-
-
 // Include admin functionality
 if (is_admin()) {
-    require_once plugin_dir_path(__FILE__) . 'admin-asset-types.php';
-    require_once plugin_dir_path(__FILE__) . 'asset-log-management.php';
-    require_once plugin_dir_path(__FILE__) . 'admin-emp-management.php';
-    require_once plugin_dir_path(__FILE__) . 'emp-log-management.php';
-    require_once plugin_dir_path(__FILE__) . 'admin-stock_items-list.php';
-    require_once plugin_dir_path(__FILE__) . 'front-Item-logs.php';
-    require_once plugin_dir_path(__FILE__) . 'admin-repaire-list.php';
-    require_once plugin_dir_path(__FILE__) . 'front-repaire-logs.php';
-    require_once plugin_dir_path(__FILE__) . 'front-emp-asset-assign-log.php';
-
-    
-    
+    require_once plugin_dir_path(__FILE__) . 'admin/side-menu/admin-asset-types.php';
+    require_once plugin_dir_path(__FILE__) . 'admin/side-menu/asset-log-management.php';
+    require_once plugin_dir_path(__FILE__) . 'admin/side-menu/admin-emp-management.php';
+    require_once plugin_dir_path(__FILE__) . 'admin/side-menu/emp-log-management.php';
+    require_once plugin_dir_path(__FILE__) . 'admin/side-menu/admin-stock_items-list.php';
+    require_once plugin_dir_path(__FILE__) . 'admin/side-menu/front-Item-logs.php';
+    require_once plugin_dir_path(__FILE__) . 'admin/side-menu/admin-repaire-list.php';
+    require_once plugin_dir_path(__FILE__) . 'admin/side-menu/front-repaire-logs.php';
+    require_once plugin_dir_path(__FILE__) . 'admin/side-menu/front-emp-asset-assign-log.php';
 }
-
-
 
 class StockManagementTableCreator {
     
@@ -496,7 +432,6 @@ function initialize_stock_management_tables() {
     $table_creator = new StockManagementTableCreator();
     $results = $table_creator->create_tables();
     
-    // Optional: Log results for debugging
     error_log('Stock Management Tables Creation Results: ' . print_r($results, true));
     
     return $results;

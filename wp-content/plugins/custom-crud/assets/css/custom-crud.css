@@ -1,0 +1,347 @@
+/* Enhanced Custom CRUD Styles */
+.custom-crud-container {
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.custom-crud-container .container-fluid {
+    padding: 20px;
+}
+
+/* Header Styles */
+.crud-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 30px 0;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.crud-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="rgba(255,255,255,0.1)"><polygon points="1000,0 1000,100 0,100"></polygon></svg>');
+    background-size: cover;
+}
+
+.crud-header .user-info {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 15px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Card Styles */
+.custom-crud-container .card {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.custom-crud-container .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    border-radius: 20px 20px 0 0 !important;
+    border: none;
+    padding: 20px 25px;
+    font-weight: 600;
+}
+
+.card-header.bg-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+.card-header.bg-success {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%) !important;
+}
+
+.card-header.bg-warning {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%) !important;
+}
+
+.card-header.bg-info {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%) !important;
+}
+
+.card-header.bg-dark {
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%) !important;
+}
+
+/* Form Styles */
+.custom-crud-container .form-control,
+.custom-crud-container .form-select {
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.custom-crud-container .form-control:focus,
+.custom-crud-container .form-select:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Button Styles */
+.custom-crud-container .btn {
+    border-radius: 12px;
+    padding: 10px 20px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+}
+
+.btn-info {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #a8a8a8 0%, #696969 100%);
+}
+
+.custom-crud-container .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Table Styles */
+.custom-crud-container .table {
+    margin-bottom: 0;
+}
+
+.custom-crud-container .table th {
+    border-top: none;
+    font-weight: 600;
+    color: #2d3748;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 15px 12px;
+    border-bottom: 2px solid #667eea;
+}
+
+.custom-crud-container .table td {
+    padding: 12px;
+    vertical-align: middle;
+    border-color: #f1f3f4;
+}
+
+.custom-crud-container .table tbody tr {
+    transition: all 0.3s ease;
+}
+
+.custom-crud-container .table tbody tr:hover {
+    background-color: #f8f9fa;
+    transform: scale(1.01);
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-active {
+    background: linear-gradient(135deg, #48bb78, #38a169);
+    color: white;
+}
+
+.status-inactive {
+    background: linear-gradient(135deg, #a0aec0, #718096);
+    color: white;
+}
+
+.status-out_of_stock {
+    background: linear-gradient(135deg, #f56565, #e53e3e);
+    color: white;
+}
+
+/* Statistics Cards */
+.stats-card {
+    text-align: center;
+    padding: 25px 15px;
+    border-radius: 15px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.stats-card i {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.stats-card .stats-number {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.stats-card .stats-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stats-total { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+.stats-active { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+.stats-value { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+.stats-out-of-stock { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+
+/* Action Buttons */
+.action-buttons .btn {
+    margin: 0 3px;
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 8px;
+    min-width: 70px;
+}
+
+/* Login Message Styles */
+.custom-crud-login-message {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.login-promo-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.login-promo-card .promo-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+.login-promo-card .promo-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.login-promo-card .promo-features {
+    list-style: none;
+    padding: 0;
+    margin: 25px 0;
+}
+
+.login-promo-card .promo-features li {
+    padding: 8px 0;
+    font-size: 1.1rem;
+}
+
+.login-promo-card .promo-features li i {
+    margin-right: 10px;
+    opacity: 0.9;
+}
+
+/* Chart Container */
+.chart-container {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: 25px;
+}
+
+/* Loading Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .custom-crud-container .container-fluid {
+        padding: 15px;
+    }
+    
+    .crud-header {
+        padding: 20px 0;
+        margin-bottom: 20px;
+    }
+    
+    .stats-card {
+        margin-bottom: 15px;
+    }
+    
+    .action-buttons .btn {
+        display: block;
+        margin-bottom: 5px;
+        width: 100%;
+    }
+    
+    .table-responsive {
+        font-size: 0.875rem;
+    }
+}
+
+/* Custom Scrollbar */
+.custom-crud-container ::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-crud-container ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.custom-crud-container ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+}
+
+.custom-crud-container ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+}
